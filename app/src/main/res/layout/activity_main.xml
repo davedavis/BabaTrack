@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tan_background"
+    android:orientation="vertical"
+    tools:context="com.echofly.babatrack.MainActivity">
+
+    <TextView
+        android:id="@+id/pinknoise"
+        style="@style/CategoryStyle"
+        android:background="@color/category_pink_noise"
+        android:text="@string/category_pink_noise"
+        android:onClick="openPinkNoiseList"/>
+
+    <TextView
+        android:id="@+id/whitenoise"
+        style="@style/CategoryStyle"
+        android:background="@color/category_white_noise"
+        android:text="@string/category_white_noise" />
+
+    <TextView
+        android:id="@+id/nature"
+        style="@style/CategoryStyle"
+        android:background="@color/category_nature"
+        android:text="@string/category_nature" />
+
+    <TextView
+        android:id="@+id/weather"
+        style="@style/CategoryStyle"
+        android:background="@color/category_weather"
+        android:text="@string/category_weather" />
+
+</LinearLayout>
