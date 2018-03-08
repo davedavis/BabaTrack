@@ -13,8 +13,8 @@
         android:id="@+id/pinknoise"
         style="@style/CategoryStyle"
         android:background="@color/category_pink_noise"
-        android:text="@string/category_pink_noise"
-        android:onClick="openPinkNoiseList"/>
+        android:text="@string/category_pink_noise" />
+
 
     <TextView
         android:id="@+id/whitenoise"
