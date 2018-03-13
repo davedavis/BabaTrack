@@ -23,7 +23,13 @@ public class Sound {
      * Image resource ID of the image associated with the sound.
      * Local images in Drawable.
      */
-    private int mImageResourceId;
+    private int mImageResourceId = NO_IMAGE_PROVIDED;
+
+    /**
+     * Constant value that represents no image was provided for this sound
+     */
+    private static final int NO_IMAGE_PROVIDED = -1;
+
 
 
     /**
@@ -70,6 +76,13 @@ public class Sound {
     public int getImageResourceId() {
 
         return mImageResourceId;
+    }
+
+
+    // Returns whether or not there is an image for this word.
+
+    public boolean hasImage() {
+        return mImageResourceId != NO_IMAGE_PROVIDED;
     }
 
 }

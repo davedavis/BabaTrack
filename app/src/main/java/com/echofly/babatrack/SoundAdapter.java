@@ -79,11 +79,30 @@ public class SoundAdapter extends ArrayAdapter<Sound> {
         // set this text on the number TextView
         descriptionTextView.setText(currentSound.getDescription());
 
-        //Find the ImageView in the list_item.xml layout with the ID list_item_icon
+        //Find the ImageView in the list_item.xml layout with the ID "image"
         ImageView iconView = (ImageView) listItemView.findViewById(R.id.image);
         //Get the image resource ID from the current Sound object and
         //set the image to imageView
-        iconView.setImageResource(currentSound.getImageResourceId());
+
+
+        //This code will just set the image. Commenting out as we're going to check for associated
+        //Images and if there is none, we'll handle it. Use the line below for situations when
+        //There's always an image associated.
+        // iconView.setImageResource(currentSound.getImageResourceId());
+
+        // Check if an image is provided for this sound or not
+        if (currentSound.hasImage()) {
+            // If an image is available, display the provided image based on the resource ID
+            iconView.setImageResource(currentSound.getImageResourceId());
+            // Make sure the view is visible
+            iconView.setVisibility(View.VISIBLE);
+        } else {
+            // Otherwise hide the ImageView (set visibility to GONE)
+            iconView.setVisibility(View.GONE);
+        }
+
+
+
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView

@@ -25,7 +25,8 @@ public class NatureActivity extends AppCompatActivity {
         // Better way, instantiate new objects when adding to the ArrayList.
         // Sample data
         // Todo: Implement database and network calls to check for noise updates.
-        natureNoises.add(new Sound("Antimatter", "Beautifully deep sound ideal for sleeping. This sound is great for helping babies get to sleep.", R.drawable.number_one));
+        // Add an image resource ID to use an image in the ListView. Otherwise, the adapter will hide it.
+        natureNoises.add(new Sound("Antimatter", "Beautifully deep sound ideal for sleeping. This sound is great for helping babies get to sleep."));
         natureNoises.add(new Sound("White Hole", "Rumbling and raw, perfect for entering sleep. Great for when baby is restless or distracted.", R.drawable.number_two));
         natureNoises.add(new Sound("Cluster", "Sharper and static, perfect for REM.This sound is great for helping babies get to sleep.", R.drawable.number_three));
         natureNoises.add(new Sound("Exoplanet", "Grinding and deep, use for deeper sleep cycles. Great for when baby is restless or distracted.", R.drawable.number_four));
