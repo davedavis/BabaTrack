@@ -21,6 +21,7 @@ public class Sound {
 
     /**
      * Image resource ID of the image associated with the sound.
+     * Local images in Drawable.
      */
     private int mImageResourceId;
 
