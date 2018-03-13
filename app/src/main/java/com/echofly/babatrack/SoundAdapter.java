@@ -3,6 +3,7 @@ package com.echofly.babatrack;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 
 public class SoundAdapter extends ArrayAdapter<Sound> {
 
+    private int mColorResourceId;
+
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
@@ -26,14 +29,16 @@ public class SoundAdapter extends ArrayAdapter<Sound> {
      *
      * @param context The current context. Used to inflate the layout file.
      * @param sounds  A List of Sound objects to display in a list
+     * @param colorResourceId is the resource ID for the background color for this list of words
      */
 
-    public SoundAdapter(Activity context, ArrayList<Sound> sounds) {
+    public SoundAdapter(Activity context, ArrayList<Sound> sounds, int colorResourceId) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
         // going to use this second argument, so it can be any value. Here, we used 0.
         super(context, 0, sounds);
+        mColorResourceId = colorResourceId;
     }
 
 
@@ -101,6 +106,13 @@ public class SoundAdapter extends ArrayAdapter<Sound> {
             // Otherwise hide the ImageView (set visibility to GONE)
             iconView.setVisibility(View.GONE);
         }
+
+        // Set the theme color for the list item
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        // Find the color that the resource ID maps to
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+        // Set the background color of the text container View
+        textContainer.setBackgroundColor(color);
 
 
 

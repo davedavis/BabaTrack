@@ -42,7 +42,7 @@ public class PinkNoiseActivity extends AppCompatActivity {
         // Instantiate a new ArrayAdapter called itemsAdapter by passing the context, the layout ID of either a custom XML layout
         // for the list item or an Android default list item that's built in( android.R.layout.simple_list_item_1), and the array
         // list itself.
-        SoundAdapter adapter = new SoundAdapter(this, pinkNoises);
+        SoundAdapter adapter = new SoundAdapter(this, pinkNoises, R.color.category_pink_noise);
         // Create a new ListView called "ListView" without having to cast.
         ListView listView = (ListView) findViewById(R.id.list);
         //Pass the adapter to the listView's setAdapter method.
