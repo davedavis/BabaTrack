@@ -94,7 +94,8 @@ public class SoundAdapter extends ArrayAdapter<Sound> {
         if (currentSound.hasImage()) {
             // If an image is available, display the provided image based on the resource ID
             iconView.setImageResource(currentSound.getImageResourceId());
-            // Make sure the view is visible
+            // Make sure the view is visible because the view is being reused. If it's hidden, when
+            // it goes to be reused, it will still be hidden. We don't want that.
             iconView.setVisibility(View.VISIBLE);
         } else {
             // Otherwise hide the ImageView (set visibility to GONE)
