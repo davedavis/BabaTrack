@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         TextView weatherTextView = findViewById(R.id.weather);
 
         //Todo: Use switch or investigate ways to make this more efficient without having to duplicate onClickListner code.
+        //Todo: Remove casting as compile SDK is 26 so inference is used. Cool new feature that tutorials don't cover.
 
         //Set the Pink Noise OnClickListener and use an Intent to open the Pink Noise Activity
         pinkNoiseTextView.setOnClickListener(new View.OnClickListener() {

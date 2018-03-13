@@ -18,6 +18,10 @@
             </intent-filter>
         </activity>
 
+        <!--parent activity adds the little arrow in the app bar to go back without having to
+            use the soft key -->
+
+
         <activity
             android:name=".PinkNoiseActivity"
             android:label="@string/category_pink_noise"
