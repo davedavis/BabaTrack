@@ -15,6 +15,12 @@
         android:background="@color/category_pink_noise"
         android:text="@string/category_pink_noise" />
 
+    <TextView
+        android:id="@+id/brownnoise"
+        style="@style/CategoryStyle"
+        android:background="@color/category_brown_noise"
+        android:text="@string/category_brown_noise" />
+
 
     <TextView
         android:id="@+id/whitenoise"

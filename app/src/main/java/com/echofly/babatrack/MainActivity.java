@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView pinkNoiseTextView = findViewById(R.id.pinknoise);
+        TextView brownNoiseTextView = findViewById(R.id.brownnoise);
         TextView whiteNoiseTextView = findViewById(R.id.whitenoise);
         TextView natureTextView = findViewById(R.id.nature);
         TextView weatherTextView = findViewById(R.id.weather);
@@ -32,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        //Set the Brown Noise OnClickListener and use an Intent to open the Brown Noise Activity
+        brownNoiseTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent brownNoiseIntent = new Intent(MainActivity.this, BrownNoiseActivity.class);
+                startActivity(brownNoiseIntent);
+            }
+        });
 
         //Set the White Noise OnClickListener and use an Intent to open the White Noise Activity
         whiteNoiseTextView.setOnClickListener(new View.OnClickListener() {

@@ -9,37 +9,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--parent activity adds the little arrow in the app bar to go back without having to
-            use the soft key -->
-
+        <!--
+            parent activity adds the little arrow in the app bar to go back without having to
+            use the soft key
+        -->
 
         <activity
             android:name=".PinkNoiseActivity"
             android:label="@string/category_pink_noise"
-            android:parentActivityName="MainActivity" />
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BrownNoiseActivity"
+            android:label="Brown Noise"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".WhiteNoiseActivity"
             android:label="@string/category_white_noise"
-            android:parentActivityName="MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NatureActivity"
             android:label="@string/category_nature"
-            android:parentActivityName="MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".WeatherActivity"
             android:label="@string/category_weather"
-            android:parentActivityName="MainActivity" />
-
-
+            android:parentActivityName=".MainActivity" />
+        
     </application>
 
 </manifest>

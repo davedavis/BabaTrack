@@ -24,4 +24,8 @@
 
     <!-- Category name for the vocabulary words for family members [CHAR LIMIT=20] -->
     <string name="category_weather">Weather</string>
+
+    <string name="category_brown_noise">Brown Noise</string>
+
+    <!--<string name="title_activity_brown_noise">BrownNoiseActivity</string>-->
 </resources>
