@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class SoundAdapter extends ArrayAdapter<Sound> {
 
+    // Define the list item background colour which can be set in the overloaded constructor.
     private int mColorResourceId;
 
 
