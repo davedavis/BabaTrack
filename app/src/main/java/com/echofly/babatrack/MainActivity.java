@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         TextView weatherTextView = findViewById(R.id.weather);
 
         // Todo: Use switch or investigate ways to make this more efficient without having to duplicate onClickListner code.
-        // Todo: Remove casting as compile SDK is 26 so inference is used. Cool new feature that tutorials don't cover.
         // Todo: Add Dark Theme for night viewing.
 
         //Set the Pink Noise OnClickListener and use an Intent to open the Pink Noise Activity

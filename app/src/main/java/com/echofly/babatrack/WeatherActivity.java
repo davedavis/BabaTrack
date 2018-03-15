@@ -1,20 +1,29 @@
 package com.echofly.babatrack;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class WeatherActivity extends AppCompatActivity {
 
+    // Initializing mMediaPlayer variable that will hold a Mediaplayer object accessible from within
+    // the anonymous OnItemClickListener Class.
+    private MediaPlayer mMediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        // Content/logic of the Activity.
-        ArrayList<Sound> weatherNoises = new ArrayList<Sound>();
+        //Create a new ArrayList of the custom object type "Sound" that we created.
+        // Set it to final so it can be accessed by the onClick method in the anonymous
+        // SetItemOnClickListner class below (because we're in the onCreate method here).
+        final ArrayList<Sound> weatherNoises = new ArrayList<Sound>();
         // Create new Sound objects and pass them into the Array List.
 
 
@@ -24,18 +33,17 @@ public class WeatherActivity extends AppCompatActivity {
 
         // Better way, instantiate new objects when adding to the ArrayList.
         // Sample data
-        // Todo: Implement database and network calls to check for noise updates.
 
-        weatherNoises.add(new Sound("Wind", "Beautifully deep sound ideal for sleeping. This sound is great for helping babies get to sleep.", R.drawable.number_one));
-        weatherNoises.add(new Sound("Light Rain", "Rumbling and raw, perfect for entering sleep. Great for when baby is restless or distracted.", R.drawable.number_two));
-        weatherNoises.add(new Sound("Heavy Rain", "Sharper and static, perfect for REM.This sound is great for helping babies get to sleep.", R.drawable.number_three));
-        weatherNoises.add(new Sound("Thunder", "Grinding and deep, use for deeper sleep cycles. Great for when baby is restless or distracted.", R.drawable.number_four));
-        weatherNoises.add(new Sound("Snow", "Late stage Pink Noise, Ideal for ending the night.This sound is great for helping babies get to sleep.", R.drawable.number_five));
-        weatherNoises.add(new Sound("Storm", "Beautifully deep sound ideal for sleeping. Great for when baby is restless or distracted.", R.drawable.number_six));
-        weatherNoises.add(new Sound("Thunder", "Rumbling and raw, perfect for entering sleep.This sound is great for helping babies get to sleep.", R.drawable.number_seven));
-        weatherNoises.add(new Sound("Hurricane", "Sharper and static, perfect for REM. This sound is great for helping babies get to sleep.", R.drawable.number_eight));
-        weatherNoises.add(new Sound("Breeze", "Grinding and deep, use for deeper sleep cycles. Great for when baby is restless or distracted.", R.drawable.number_nine));
-        weatherNoises.add(new Sound("Mayhem", "Late stage Pink Noise, Ideal for ending the night. This sound is great for helping babies get to sleep.", R.drawable.number_ten));
+        weatherNoises.add(new Sound("Wind", "Beautifully deep sound ideal for sleeping. This sound is great for helping babies get to sleep.", R.drawable.number_one, R.raw.sound));
+        weatherNoises.add(new Sound("Light Rain", "Rumbling and raw, perfect for entering sleep. Great for when baby is restless or distracted.", R.drawable.number_two, R.raw.sound2));
+        weatherNoises.add(new Sound("Heavy Rain", "Sharper and static, perfect for REM.This sound is great for helping babies get to sleep.", R.drawable.number_three, R.raw.sound3));
+        weatherNoises.add(new Sound("Thunder", "Grinding and deep, use for deeper sleep cycles. Great for when baby is restless or distracted.", R.drawable.number_four, R.raw.sound4));
+        weatherNoises.add(new Sound("Snow", "Late stage Pink Noise, Ideal for ending the night.This sound is great for helping babies get to sleep.", R.drawable.number_five, R.raw.sound5));
+        weatherNoises.add(new Sound("Storm", "Beautifully deep sound ideal for sleeping. Great for when baby is restless or distracted.", R.drawable.number_six, R.raw.sound6));
+        weatherNoises.add(new Sound("Thunder", "Rumbling and raw, perfect for entering sleep.This sound is great for helping babies get to sleep.", R.drawable.number_seven, R.raw.sound7));
+        weatherNoises.add(new Sound("Hurricane", "Sharper and static, perfect for REM. This sound is great for helping babies get to sleep.", R.drawable.number_eight, R.raw.sound8));
+        weatherNoises.add(new Sound("Breeze", "Grinding and deep, use for deeper sleep cycles. Great for when baby is restless or distracted.", R.drawable.number_nine, R.raw.sound9));
+        weatherNoises.add(new Sound("Mayhem", "Late stage Pink Noise, Ideal for ending the night. This sound is great for helping babies get to sleep.", R.drawable.number_ten, R.raw.sound10));
 
 
         // Instantiate a new ArrayAdapter called itemsAdapter by passing the context, the layout ID of either a custom XML layout
@@ -47,6 +55,17 @@ public class WeatherActivity extends AppCompatActivity {
         //Pass the adapter to the listView's setAdapter method.
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // Get the {@link Sound} object at the given position the user clicked on.
+
+                Sound sound = weatherNoises.get(position);
+
+                mMediaPlayer = MediaPlayer.create(WeatherActivity.this, sound.getAudioResourceId());
+                mMediaPlayer.start();
+            }
+        });
 
 
     }
