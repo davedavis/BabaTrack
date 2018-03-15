@@ -1,12 +1,17 @@
 package com.echofly.babatrack;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class PinkNoiseActivity extends AppCompatActivity {
+
+    private MediaPlayer mMediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,16 @@ public class PinkNoiseActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list);
         //Pass the adapter to the listView's setAdapter method.
         listView.setAdapter(adapter);
+
+        // Add a setOnItemClickListener on each item in the list.
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mMediaPlayer = MediaPlayer.create(PinkNoiseActivity.this, R.raw.sound);
+                mMediaPlayer.start();
+            }
+        });
 
     }
 }
