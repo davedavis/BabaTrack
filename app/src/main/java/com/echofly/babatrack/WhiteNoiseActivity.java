@@ -63,6 +63,10 @@ public class WhiteNoiseActivity extends AppCompatActivity {
 
                 Sound sound = whiteNoises.get(position);
 
+                // Release the MediaPlayer if it currently exists because we are about to play a new file.
+                // Disable this for merged playing.
+                releaseMediaPlayer();
+
                 mMediaPlayer = MediaPlayer.create(WhiteNoiseActivity.this, sound.getAudioResourceId());
                 mMediaPlayer.start();
 

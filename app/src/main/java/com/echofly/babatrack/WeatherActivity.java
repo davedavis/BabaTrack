@@ -63,6 +63,10 @@ public class WeatherActivity extends AppCompatActivity {
 
                 Sound sound = weatherNoises.get(position);
 
+                // Release the MediaPlayer if it currently exists because we are about to play a new file.
+                // Disable this for merged playing.
+                releaseMediaPlayer();
+
                 mMediaPlayer = MediaPlayer.create(WeatherActivity.this, sound.getAudioResourceId());
                 mMediaPlayer.start();
 

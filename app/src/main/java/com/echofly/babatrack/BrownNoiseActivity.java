@@ -64,6 +64,10 @@ public class BrownNoiseActivity extends AppCompatActivity {
 
                 Sound sound = brownNoises.get(position);
 
+                // Release the MediaPlayer if it currently exists because we are about to play a new file.
+                // Disable this for merged playing.
+                releaseMediaPlayer();
+
                 mMediaPlayer = MediaPlayer.create(BrownNoiseActivity.this, sound.getAudioResourceId());
                 mMediaPlayer.start();
 

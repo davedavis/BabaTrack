@@ -71,6 +71,12 @@ public class PinkNoiseActivity extends AppCompatActivity {
                 // Todo: Remove debug logging method.
                 Log.e("PinkNoiseActivity", "Current sound: " + sound);
 
+
+                // Release the MediaPlayer if it currently exists because we are about to play a new file.
+                // Disable this for merged playing.
+                // Todo: Disable for multi track
+                releaseMediaPlayer();
+
                 mMediaPlayer = MediaPlayer.create(PinkNoiseActivity.this, sound.getAudioResourceId());
                 mMediaPlayer.start();
 
