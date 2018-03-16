@@ -3,6 +3,7 @@ package com.echofly.babatrack;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -65,9 +66,39 @@ public class BrownNoiseActivity extends AppCompatActivity {
 
                 mMediaPlayer = MediaPlayer.create(BrownNoiseActivity.this, sound.getAudioResourceId());
                 mMediaPlayer.start();
+
+                // release MediaPlayer using helper method when song is complete.
+
+                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        releaseMediaPlayer();
+                    }
+                });
             }
         });
 
 
     }
+
+
+    /**
+     * Clean up the media player by releasing its resources.
+     */
+    private void releaseMediaPlayer() {
+        // If the media player is not null, then it may be currently playing a sound.
+        if (mMediaPlayer != null) {
+            // Regardless of the current state of the media player, release its resources
+            // because we no longer need it.
+            mMediaPlayer.release();
+            Log.e("BrownNoiseActivity", "Media Player successfully released!!!!!!!!!!!!!!!!");
+
+            // Set the media player back to null. For our code, we've decided that
+            // setting the media player to null is an easy way to tell that the media player
+            // is not configured to play an audio file at the moment.
+            mMediaPlayer = null;
+        }
+    }
+
+
 }

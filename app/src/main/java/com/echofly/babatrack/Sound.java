@@ -96,5 +96,17 @@ public class Sound {
         return mImageResourceId != NO_IMAGE_PROVIDED;
     }
 
+
+    // Create a toString method for debugging sound objects.
+    // Todo: Remove this method once published.
+    @Override
+    public String toString() {
+        return "Sound{" +
+                "mTitle='" + mTitle + '\'' +
+                ", mDescription='" + mDescription + '\'' +
+                ", mImageResourceId=" + mImageResourceId +
+                ", mAudioResourceId=" + mAudioResourceId +
+                '}';
+    }
 }
 
