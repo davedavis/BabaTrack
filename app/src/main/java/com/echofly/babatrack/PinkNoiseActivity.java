@@ -1,5 +1,7 @@
 package com.echofly.babatrack;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +17,58 @@ public class PinkNoiseActivity extends AppCompatActivity {
     // Initializing mMediaPlayer variable that will hold a Mediaplayer object accessible from within
     // the anonymous OnItemClickListener Class.
     private MediaPlayer mMediaPlayer;
+    // Initializing AudioManager variable that we only need to initialize it once in the activity
+    // lifecycle. This will be used to handle Audio Focus and be a good citizen. Step 1 in managing
+    // audio focus in an activity.
+    private AudioManager mAudioManager;
+
+    /**
+     * This listener gets triggered whenever the audio focus changes
+     * (i.e., we gain or lose audio focus because of another app or device).
+     */
+    private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                    // Make sure to check for a null object or Java will spit out an error.
+                    // Todo: Implement volume duck instead of pause for ducking events.
+                    focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK && mMediaPlayer != null) {
+                // The AUDIOFOCUS_LOSS_TRANSIENT case means that we've lost audio focus for a
+                // short amount of time. The AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK case means that
+                // our app is allowed to continue playing sound but at a lower volume. We'll treat
+                // both cases the same way because our app is playing short sound files.
+
+                // Pause playback and reset player to the start of the file. That way, we can
+                // play the word from the beginning when we resume playback.
+                mMediaPlayer.pause();
+                // Play from the beginning
+                // Todo: Implement position tracking and seek back.
+                mMediaPlayer.seekTo(0);
+
+            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                // The AUDIOFOCUS_GAIN case means we have regained focus and can resume playback.
+                mMediaPlayer.start();
+            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                // The AUDIOFOCUS_LOSS case means we've lost audio focus and
+                // Stop playback and clean up resources
+                releaseMediaPlayer();
+            }
+        }
+    };
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pink_noise);
+
+        // Create and setup the {@link AudioManager} to request audio focus.
+        // Here we're getting a reference to the AudioManager system service so we can call the
+        // requestAudioFocus() method on it later.
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
 
         //Create a new ArrayList of the custom object type "Sound" that we created.
@@ -74,21 +123,35 @@ public class PinkNoiseActivity extends AppCompatActivity {
 
                 // Release the MediaPlayer if it currently exists because we are about to play a new file.
                 // Disable this for merged playing.
-                // Todo: Disable for multi track
-                releaseMediaPlayer();
-
-                mMediaPlayer = MediaPlayer.create(PinkNoiseActivity.this, sound.getAudioResourceId());
-                mMediaPlayer.start();
-
-                // release MediaPlayer using helper method when song is complete.
-                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        releaseMediaPlayer();
-                    }
-                });
+                // Todo: Re-Enable for single track playback.
+                // releaseMediaPlayer();
 
 
+                // Request audio focus now and pass it the change listener defined above), the stream type and the
+                // type of focus needed. Then check if it's granted.
+                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                        // Use the Music Stream constant
+                        AudioManager.STREAM_MUSIC,
+                        // Request Permanent Focus
+                        AudioManager.AUDIOFOCUS_GAIN);
+
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+
+
+                    //Start Playback if Audio Focus is granted.
+                    mMediaPlayer = MediaPlayer.create(PinkNoiseActivity.this, sound.getAudioResourceId());
+                    mMediaPlayer.start();
+
+                    // release MediaPlayer using helper method when song is complete.
+                    mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            releaseMediaPlayer();
+                        }
+
+                    });
+
+                }
             }
         });
 
@@ -111,9 +174,12 @@ public class PinkNoiseActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
+
+            // As per developer guidelines, regardless of weather or not we were granted audio focus,
+            // abandon it so that it doesn't interfere with other activity lifecycles and so that we
+            // don't get any callbacks from the listener.
+            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
-
-
 
 }
