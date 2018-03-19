@@ -31,3 +31,5 @@ Play various White/Pink/Brown noises to help your baby sleep.
 - Modify app bar to show toggle for favourites.
 - Add current playing sounds to notification area.
 - Refactor app name
+- Add GA/GTM to app
+- Release V1.

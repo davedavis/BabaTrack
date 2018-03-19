@@ -25,7 +25,7 @@
 
     <!-- Background color for the white noises category (The Blue
     Grey pallet here: https://material.io/guidelines/style/color.html#color-color-palette-->
-    <color name="category_white_noise">#ECEFF1</color>
+    <color name="category_white_noise">#000000</color>
 
     <!-- Background color for the nature category -->
     <color name="category_nature">#4CAF50</color>
