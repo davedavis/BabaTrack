@@ -1,76 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for the main screen -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_grey"
     android:orientation="vertical"
     tools:context="com.echofly.babatrack.MainActivity">
 
-    <!-- Pink Noise category -->
-    <FrameLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/category_pink_noise">
+        android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/pinknoise"
-            style="@style/CategoryStyle"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/category_pink_noise" />
-    </FrameLayout>
-
-
-    <!-- Brown Noise category -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/category_brown_noise">
-
-        <TextView
-            android:id="@+id/brownnoise"
-            style="@style/CategoryStyle"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/category_brown_noise" />
-    </FrameLayout>
-
-    <!-- White Noise category -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/category_white_noise">
-
-        <TextView
-            android:id="@+id/whitenoise"
-            style="@style/CategoryStyle"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/category_white_noise" />
-    </FrameLayout>
-
-
-    <!-- Nature Noises category -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/category_nature">
-
-        <TextView
-            android:id="@+id/nature"
-            style="@style/CategoryStyle"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/category_nature" />
-    </FrameLayout>
-
-    <!-- Weather Noises category -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/category_weather">
-
-        <TextView
-            android:id="@+id/weather"
-            style="@style/CategoryStyle"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/category_weather" />
-    </FrameLayout>
 </LinearLayout>
