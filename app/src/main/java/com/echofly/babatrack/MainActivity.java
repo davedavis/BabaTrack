@@ -1,14 +1,3 @@
-// Todo: Add Dark Theme for night viewing.
-// Todo: Add correct sounds per category.
-// Todo: Fix White Noise background colour.
-// Todo: Source image resources.
-// ToDo: Add correct launcher icon(s).
-// Todo: Perform Lint.
-// Todo: Modify list items to change play icon to pause/stop icon when playing.
-// Todo: Modify List items to show star/heart.
-// Todo: Modify app bar to show toggle for favourites.
-// Todo: Add current playing sounds to notification area.
-
 package com.echofly.babatrack;
 
 
