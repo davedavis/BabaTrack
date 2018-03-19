@@ -1,6 +1,13 @@
-// Todo: Use switch or investigate ways to make this more efficient without having to duplicate onClickListner code.
 // Todo: Add Dark Theme for night viewing.
-// Todo: Add AudioManager audio focus handling in all activities.
+// Todo: Add correct sounds per category.
+// Todo: Fix White Noise background colour.
+// Todo: Source image resources.
+// ToDo: Add correct launcher icon(s).
+// Todo: Perform Lint.
+// Todo: Modify list items to change play icon to pause/stop icon when playing.
+// Todo: Modify List items to show star/heart.
+// Todo: Modify app bar to show toggle for favourites.
+// Todo: Add current playing sounds to notification area.
 
 package com.echofly.babatrack;
 
