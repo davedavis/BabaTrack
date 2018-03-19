@@ -40,12 +40,16 @@
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
+                android:layout_alignTop="@+id/play_icon"
+                android:layout_toLeftOf="@+id/play_icon"
+                android:layout_toStartOf="@+id/play_icon"
                 android:layout_weight="1"
                 android:gravity="top"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
-                tools:text="This is the description" />
+                tools:text="This is the description. A longer one would look a little bit like this for reference. "
+                tools:textColor="" />
         </LinearLayout>
 
         <ImageView
@@ -56,5 +60,6 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
             android:src="@drawable/ic_play_arrow_white_24dp" />
+
     </RelativeLayout>
 </LinearLayout>

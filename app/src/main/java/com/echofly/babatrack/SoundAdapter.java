@@ -69,7 +69,7 @@ public class SoundAdapter extends ArrayAdapter<Sound> {
                     R.layout.list_item, parent, false);
         }
 
-        // Get the {@link AndroidFlavor} object located at this position in the list
+        // Get the {@link Sound} object located at this position in the list
         Sound currentSound = getItem(position);
 
         // Find the TextView in the list_item.xml layout with the ID version_name
@@ -89,7 +89,6 @@ public class SoundAdapter extends ArrayAdapter<Sound> {
         ImageView iconView = (ImageView) listItemView.findViewById(R.id.image);
         //Get the image resource ID from the current Sound object and
         //set the image to imageView
-
 
         //This code will just set the image. Commenting out as we're going to check for associated
         //Images and if there is none, we'll handle it. Use the line below for situations when
@@ -114,6 +113,13 @@ public class SoundAdapter extends ArrayAdapter<Sound> {
         int color = ContextCompat.getColor(getContext(), mColorResourceId);
         // Set the background color of the text container View
         textContainer.setBackgroundColor(color);
+
+        // ToDo: Set Background Colours on icons.
+        // Set the background colour of the play icon and stop icon.
+        //View playicon = listItemView.findViewById(R.id.play_icon);
+        //View stopicon = listItemView.findViewById(R.id.stop_icon);
+        //playicon.setBackgroundColor(color);
+        //stopicon.setBackgroundColor(color);
 
 
 

@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Todo: Use switch or investigate ways to make this more efficient without having to duplicate onClickListner code.
         // Todo: Add Dark Theme for night viewing.
+        // Todo: Add AudioManager audio focus handling in all activities.
 
         //Set the Pink Noise OnClickListener and use an Intent to open the Pink Noise Activity
         pinkNoiseTextView.setOnClickListener(new View.OnClickListener() {
