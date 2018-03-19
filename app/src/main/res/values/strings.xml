@@ -27,8 +27,12 @@
 
     <string name="category_brown_noise">Brown Noise</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sound_image_default_description">This is an image associated with the sound</string>
+
+    <string name="play_button_image_description">This is a button that plays the associated sound</string>
+
+    <string name="hello_blank_fragment">Something went wrong. Please report this.</string>
+
 
     <!--<string name="title_activity_brown_noise">BrownNoiseActivity</string>-->
 </resources>

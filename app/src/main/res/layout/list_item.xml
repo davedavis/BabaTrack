@@ -11,6 +11,7 @@
         android:id="@+id/image"
         android:layout_width="@dimen/list_item_height"
         android:layout_height="@dimen/list_item_height"
+        android:contentDescription="@string/sound_image_default_description"
         android:src="@mipmap/ic_launcher" />
 
     <RelativeLayout
@@ -47,7 +48,7 @@
                 android:gravity="top"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@android:color/white"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 tools:text="This is the description. A longer one would look a little bit like this for reference. "
                 tools:textColor="" />
         </LinearLayout>
@@ -59,6 +60,7 @@
             android:layout_alignRight="@id/text_container"
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
+            android:contentDescription="@string/play_button_image_description"
             android:src="@drawable/ic_play_arrow_white_24dp" />
 
     </RelativeLayout>
